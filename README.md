@@ -31,6 +31,16 @@ hoistNonReactStatics(targetComponent, sourceComponent, { myStatic: true, myOther
 ## What does this module do?
 
 See this [explanation](https://facebook.github.io/react/docs/higher-order-components.html#static-methods-must-be-copied-over) from the React docs.
+当你将HOC应用于组件时，原始组件将使用容器组件进行包装。这意味着新组件没有原始组件的任何静态方法。
+
+```
+// Define a static method
+WrappedComponent.staticMethod = function () {};
+// Now apply a HOC
+const EnhancedComponent = ehance(WrappedComponent);
+typeof EnhancedComponent.staticMethod === 'undefined'; // true
+```
+
 
 ## Compatible React Versions
 
